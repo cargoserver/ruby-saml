@@ -23,8 +23,8 @@ class RubySamlTest < Test::Unit::TestCase
       should "support base64 encoded responses" do
         expected_response = valid_response
         logoutresponse = OneLogin::RubySaml::Logoutresponse.new(Base64.encode64(expected_response), settings)
-
         assert_equal expected_response, logoutresponse.response
+        assert logoutresponse.success?
       end
     end
 

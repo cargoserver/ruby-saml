@@ -29,9 +29,9 @@ module OneLogin
         raise ArgumentError.new("Logoutresponse cannot be nil") if response.nil?
         self.settings = settings
 
-        @options = options
+        @options  = options
         @response = decode_raw_response(response)
-        @document = XMLSecurity::SignedDocument.new(response)
+        @document = XMLSecurity::SignedDocument.new(@response)
       end
 
       def validate!
